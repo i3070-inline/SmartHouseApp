@@ -7,7 +7,7 @@ import {FormsModule} from '@angular/forms';
   standalone: true,
   imports: [RouterOutlet, FormsModule],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+  styleUrl: './app.component.scss',
 })
 export class AppComponent {
   title = 'SmartHouseApp'
