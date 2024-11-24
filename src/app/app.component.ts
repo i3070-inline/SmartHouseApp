@@ -10,25 +10,6 @@ import {FormsModule} from '@angular/forms';
   styleUrl: './app.component.scss',
   changeDetection : ChangeDetectionStrategy.OnPush
 })
-export class AppComponent implements OnInit {
-  title = 'SmartHouseApp';
-  countValue = signal<number>(0);
+export class AppComponent {
 
-  // Metodă pentru incrementare
-  onCount(): void {
-    this.countValue.update(val => val + 1);
-    console.log(this.countValue()); // Accesăm valoarea signalului
-  }
-
-  // Pornește incrementarea automată la fiecare secundă
-  startCounter(): void {
-    setInterval(() => {
-      this.onCount();
-    }, 1000); // 1 secundă
-  }
-
-  // Ciclu de viață Angular: se execută la inițializarea componentului
-  ngOnInit(): void {
-    this.startCounter();
-  }
 }
