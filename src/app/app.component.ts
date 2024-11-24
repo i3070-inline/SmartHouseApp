@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {ChangeDetectionStrategy, Component, OnInit, signal} from '@angular/core';
 import {RouterOutlet} from '@angular/router';
 import {FormsModule} from '@angular/forms';
 
@@ -8,12 +8,27 @@ import {FormsModule} from '@angular/forms';
   imports: [RouterOutlet, FormsModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
+  changeDetection : ChangeDetectionStrategy.OnPush
 })
-export class AppComponent {
-  title = 'SmartHouseApp'
-  countValue: number = 0
+export class AppComponent implements OnInit {
+  title = 'SmartHouseApp';
+  countValue = signal<number>(0);
+
+  // Metodă pentru incrementare
   onCount(): void {
-    this.countValue++
-    console.log(this.countValue)
+    this.countValue.update(val => val + 1);
+    console.log(this.countValue()); // Accesăm valoarea signalului
+  }
+
+  // Pornește incrementarea automată la fiecare secundă
+  startCounter(): void {
+    setInterval(() => {
+      this.onCount();
+    }, 1000); // 1 secundă
+  }
+
+  // Ciclu de viață Angular: se execută la inițializarea componentului
+  ngOnInit(): void {
+    this.startCounter();
   }
 }

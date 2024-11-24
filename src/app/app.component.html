@@ -1,6 +1,6 @@
 <div>
-  <input type="text" [ngModel]="countValue" [disabled]="true">
-  <button (click)="onCount()" [style.width.px]="200" [style.height.px]="100"></button>
+  <div>{{countValue()}}</div>
+  <button  [style.width.px]="200" [style.height.px]="100"></button>
 </div>
 
 <router-outlet />
