@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, OnInit, signal} from '@angular/core';
+import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
 import {RouterOutlet} from '@angular/router';
 import {FormsModule} from '@angular/forms';
 
@@ -8,8 +8,15 @@ import {FormsModule} from '@angular/forms';
   imports: [RouterOutlet, FormsModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
-  changeDetection : ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AppComponent {
-
+export class AppComponent implements OnInit {
+  ngOnInit(): void {
+    // Verificăm preferința utilizatorului pentru tema (dark/light)
+    const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
+// Setează tema în funcție de preferință
+    const rootElement = document.documentElement;
+    console.log(rootElement)
+    rootElement.classList.add(prefersDarkScheme.matches ? "dark" : "light");
+  }
 }

@@ -1,0 +1,28 @@
+@use 'mixins' as mix;
+:root {
+  --transparent-color: transparent;
+}
+$theme-colors: (
+  primary-color: #2B8EDE,
+  secondary-color: #70A8D7,
+  accent-color: #D6C9C9,
+  error-color: #E63946,
+  success-color: #4CAF50,
+  warning-color: #FFC107,
+  info-color: #77B6EA,
+  shadow-color: #11111170
+);
+.dark {
+  --background-color: #4F5254;
+  --text-main-color: #F5F5F5;
+  --text-muted-color: #AAB8C2;
+  --text-control-color: #282828;
+  @include mix.generate-colors-theme($theme-colors, 2, true)
+}
+.light {
+  --background-color: #E8EEF2;
+  --text-main-color: #282828;
+  --text-muted-color: #6A8395;
+  --text-control-color: #F5F5F5;
+  @include mix.generate-colors-theme($theme-colors, 2, false)
+}
