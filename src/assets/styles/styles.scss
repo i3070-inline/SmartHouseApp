@@ -14,3 +14,34 @@ body {
   font-family: 'Custom', sans-serif;
   font-weight: 400;
 }
+
+.neo--btn {
+  all: unset;
+  display: inline-block; /* Păstrează comportamentul de buton */
+  cursor: pointer;       /* Arată că e interactiv */
+  width: 100px;
+  height: 100px;
+  touch-action: manipulation;
+  border-radius: 5%;
+  transition: all 0.1s ease-in-out;
+  background: #D5DEEA;
+  box-shadow: -6px -6px 10px rgba(255, 255, 255, 0.8),
+  6px 6px 10px rgba(0, 0, 0, 0.2);
+}
+
+.neo--btn:hover {
+  box-shadow: -5px -5px 9px rgba(255, 255, 255, 0.9),
+  5px 5px 9px rgba(0, 0, 0, 0.3);
+}
+
+.neo--btn:focus-visible {
+  box-shadow: -5px -5px 9px rgba(255, 255, 255, 0.9),
+  5px 5px 9px rgba(0, 0, 0, 0.3);
+}
+
+.neo--btn:active {
+  border-color: red;
+  box-shadow: inset -4px -4px 8px rgba(255, 255, 255, 0.5),
+  inset 8px 8px 16px rgba(0, 0, 0, 0.1);
+}
+

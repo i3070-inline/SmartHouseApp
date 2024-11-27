@@ -1,0 +1,10 @@
+@use 'mixins' as mix;
+.container {
+  background: var(--background-color);
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  font-weight: 400;
+  place-content: center;
+}
+

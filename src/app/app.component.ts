@@ -17,6 +17,6 @@ export class AppComponent implements OnInit {
 // Setează tema în funcție de preferință
     const rootElement = document.documentElement;
     console.log(rootElement)
-    rootElement.classList.add(prefersDarkScheme.matches ? "dark" : "light");
+    rootElement.classList.add(!prefersDarkScheme.matches ? "dark" : "light");
   }
 }
