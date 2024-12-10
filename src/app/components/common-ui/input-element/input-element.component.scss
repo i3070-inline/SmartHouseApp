@@ -1,0 +1,66 @@
+@import 'styles';
+:host {
+  display: grid;
+  align-items: stretch;
+  justify-content: stretch;
+}
+.input-container {
+  display: grid;
+  align-items: stretch;
+  justify-content: stretch;
+  position: relative;
+  max-height: 2.85em;
+}
+.input-element {
+  @extend .neo-input;
+  @extend .neo-shadow-inset;
+}
+.input-placeholder-container {
+  position: absolute;
+  top: 50%;
+  left: 0.7em;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  opacity: 0.7;
+  font-style: italic;
+  font-weight: 400;
+  pointer-events: none;
+  transform: translateY(-50%);
+  @extend .transition-base;
+}
+.input-icon {
+  justify-self: start;
+  width: 1.2em;
+  margin-right: 0.3em;
+  height: 1.2em;
+  display: none;
+}
+.input-placeholder {
+  font-style: inherit;
+  font-weight: inherit;
+  justify-self: start;
+}
+.input-error-text {
+  margin-top: 0.5em;
+  font-size: 0.7em;
+  font-weight: 400;
+  display: none;
+  color: var(--error-color);
+}
+.input-element.focused + .input-placeholder-container,
+.input-element.notEmpty + .input-placeholder-container {
+  top: 0;
+  transform: translateY(-130%);
+  opacity: 1;
+  left: 0;
+  font-weight: 500;
+  font-style: normal;
+  .input-icon {
+    display: block;
+  }
+}
+.input-element:invalid ~ .input-error-text {
+  display: block;
+}
+

@@ -1,0 +1,11 @@
+<div (click)="toggle()"
+     (keydown.enter)="toggle()"
+     [attr.currentTheme]="currentTheme()"
+     class="theme-toggle-bnt"
+     role="button"
+     tabindex="0">
+  <span class="toggle-circle neo-shadow-base">
+    <svg class="toggle-icon"></svg>
+  </span>
+  <span class="toggle-label">{{currentTheme() | titlecase}} Mode</span>
+</div>

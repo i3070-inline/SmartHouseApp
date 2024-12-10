@@ -1,0 +1,20 @@
+<div class="input-container">
+  <input #inputElement
+         [class.focused]="focused()"
+         [class.notEmpty]="notEmpty()"
+         (blur)="focused.set(false)"
+         (focus)="focused.set(true)"
+         (input)="notEmpty.set(inputElement.value.trim() !== '')"
+         class="input-element"
+         type="text">
+  <div class="input-placeholder-container">
+    <svg class="input-icon">
+      <use [attr.href]="iconPath"></use>
+    </svg>
+    <label class="input-placeholder">
+      {{notEmpty() || focused() ? placeholder.description : placeholder.action}}
+    </label>
+  </div>
+  <label class="input-error-text">Valeriu</label>
+</div>
+
