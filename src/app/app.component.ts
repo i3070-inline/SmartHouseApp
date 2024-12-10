@@ -1,6 +1,7 @@
-import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject, OnInit} from '@angular/core';
 import {RouterOutlet} from '@angular/router';
 import {FormsModule} from '@angular/forms';
+import {ThemeHelperService} from './services/theme/theme-helper.service';
 
 @Component({
   selector: 'app-root',
@@ -11,12 +12,8 @@ import {FormsModule} from '@angular/forms';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AppComponent implements OnInit {
+  themeService = inject(ThemeHelperService)
   ngOnInit(): void {
-    // Verificăm preferința utilizatorului pentru tema (dark/light)
-    const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
-// Setează tema în funcție de preferință
-    const rootElement = document.documentElement;
-    console.log(rootElement)
-    rootElement.classList.add(!prefersDarkScheme.matches ? "dark" : "light");
+    this.themeService.setTheme(this.themeService.getPreferencesTheme())
   }
 }

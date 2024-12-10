@@ -2,46 +2,103 @@
 @import 'fonts';
 @import 'colors';
 * {
-  padding: 0;
   margin: 0;
+  padding: 0;
   box-sizing: border-box;
+  background: transparent;
+}
+html, body {
+  font-family: 'Custom', sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  color: var(--text-main-color);
+  @extend .transition-base
 }
 body {
-  background: var(--transparent-color);
-  height: 100vh;
+  background-image: var(--background-image);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: top center;
+  @include responsive-font();
+}
+h1 {
+  @extend .transition-base;
+}
+app-root,
+router-outlet + * {
+  display: grid;
   width: 100vw;
-  font-style: normal;
-  font-family: 'Custom', sans-serif;
-  font-weight: 400;
+  height: 100vh;
 }
-
-.neo--btn {
-   all: unset;
-  display: inline-block; /* Păstrează comportamentul de buton */
-  cursor: pointer;       /* Arată că e interactiv */
-  width: 100px;
-  height: 100px;
-  touch-action: manipulation;
-  border-radius: 5%;
-  transition: all 0.1s ease-in-out;
-  background: #D5DEEA;
-  box-shadow: -6px -6px 10px rgba(255, 255, 255, 0.8),
-  6px 6px 10px rgba(0, 0, 0, 0.2);
+.neo-btn-base {
+  border: none;
+  display: grid;
+  padding: 0.7em 1em;
+  font-size: inherit;
+  font-family: inherit;
+  font-weight: inherit;
+  text-align: center;
+  justify-self: center;
+  align-self: center;
+  cursor: pointer;
+  outline: none;
+  border-radius: 0.5em;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  box-shadow: var(--base-shadow);
+  &:disabled {
+    @extend .disabled;
+  }
 }
-
-.neo--btn:hover {
-  box-shadow: -5px -5px 9px rgba(255, 255, 255, 0.9),
-  5px 5px 9px rgba(0, 0, 0, 0.3);
+.neo-btn {
+  @extend .neo-btn-base;
+  box-shadow: var(--base-shadow);
 }
-
-.neo--btn:focus-visible {
-  box-shadow: -5px -5px 9px rgba(255, 255, 255, 0.9),
-  5px 5px 9px rgba(0, 0, 0, 0.3);
+.neo-toggle-btn {
+  @extend .neo-btn-base;
+  box-shadow: var(--inset-shadow);
 }
-
-.neo--btn:active {
-  border-color: red;
-  box-shadow: inset -4px -4px 8px rgba(255, 255, 255, 0.5),
-  inset 8px 8px 16px rgba(0, 0, 0, 0.1);
+.neo-input-base {
+  border: none;
+  padding: 0.7em 1em;
+  font-size: inherit;
+  font-family: inherit;
+  font-weight: inherit;
+  color: inherit;
+  text-align: left;
+  outline: none;
+  border-radius: 0.5em;
+  box-shadow: var(--inset-shadow);
+  -webkit-tap-highlight-color: transparent;
+  &:disabled {
+    @extend .disabled;
+  }
+  &::placeholder {
+    font-style: italic;
+    font-size: inherit;
+    font-weight: inherit;
+    color: var(--text-muted-color);
+  }
+  &::selection {
+    background: var(--info-color);
+  }
 }
-
+.neo-input {
+  @extend .neo-input-base;
+  box-shadow: var(--inset-shadow);
+}
+.neo-shadow-base {
+  @include apply-shadow('base');
+}
+.neo-shadow-inset {
+  @include apply-shadow('inset');
+}
+.transition-base {
+  transition: all 0.3s ease-in-out;
+}
+.disabled {
+  color: var(--text-muted-color);
+  cursor: default;
+  opacity: 0.7;
+  pointer-events: none;
+}

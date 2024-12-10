@@ -1,6 +1,14 @@
-
-
-
 <div class="container">
-  <button class="neo--btn" type="button"></button>
+  <app-theme-toggle-button-element class="toggle-theme-btn">
+  </app-theme-toggle-button-element>
+  <div class="sign-in-container">
+    <h1 class="sign-in-text">Sign In</h1>
+    <app-input-element [placeholder]="{description : 'Username' , action : 'Please enter username' }"
+                       style="margin: 0 20%;"></app-input-element>
+    <app-input-element [iconPath]="'assets/icons/password-icon.svg#password-icon'" [placeholder]="{description :
+    'Password' ,
+     action :
+    'Please enter password' }"
+                       style="margin: 0 20%;"></app-input-element>
+  </div>
 </div>

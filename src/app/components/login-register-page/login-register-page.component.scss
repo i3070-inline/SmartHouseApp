@@ -1,10 +1,46 @@
-@use 'mixins' as mix;
+@import 'styles';
 .container {
-  background: var(--background-color);
-  width: 100vw;
-  height: 100vh;
+  box-shadow: var(--base-hover-shadow);
+  align-self: stretch;
+  justify-self: stretch;
+  margin: 10% 15%;
   display: grid;
-  font-weight: 400;
-  place-content: center;
+  position: relative;
+  grid-template-columns: 1.3fr 1fr;
+  grid-template-rows: 1fr auto;
+  grid-template-areas: 'sign-in sign-out' 'footer-Theme footer-Language';
+  border-radius: 1.2em;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
-
+.toggle-theme-btn {
+  grid-area: footer-Theme;
+  align-self: start;
+  justify-self: start;
+  margin: 0.5em
+}
+//.sign-in-container {
+//  grid-area: sign-in;
+//  backdrop-filter: blur(10px);
+//  background: transparent;
+//  box-shadow: var(--base-shadow);
+//  border-radius: 1.2em;
+//  @extend .transition-all;
+//  &.clicked {
+//    transform: translate(100%, 0); /* Mută în poziția corespunzătoare */
+//  }
+//}
+.sign-in-container {
+  grid-area: sign-in;
+  backdrop-filter: blur(10px);
+  display: grid;
+  grid-gap: 3rem;
+  position: relative;
+  grid-template-rows: 1fr auto auto 1fr;
+}
+.sign-in-text {
+  justify-self: center;
+  align-self: center;
+  text-align: center;
+  text-wrap: pretty;
+}
