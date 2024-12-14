@@ -1,12 +1,19 @@
 <div class="input-container">
   <input #inputElement
-         [class.focused]="focused()"
-         [class.notEmpty]="notEmpty()"
          (blur)="focused.set(false)"
          (focus)="focused.set(true)"
          (input)="notEmpty.set(inputElement.value.trim() !== '')"
-         class="input-element"
-         type="text">
+         [class.focused]="focused()"
+         [class.notEmpty]="notEmpty()"
+         [type]="inputType()"
+         class="input-element">
+    <svg (click)="togglePassword()"
+         *ngIf="typeInput === 'password' && notEmpty()"
+         class="input-eye-icon">
+    <svg>
+  <use [attr.href]="inputType() === 'password' ? 'assets/icons/user-eye-icon.svg#user-eye-icon' : 'assets/icons/user-eye-off-icon.svg#user-eye-off-icon'"></use>
+</svg>
+    </svg>
   <div class="input-placeholder-container">
     <svg class="input-icon">
       <use [attr.href]="iconPath"></use>

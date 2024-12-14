@@ -1,23 +1,20 @@
-@import 'styles';
+@import "styles";
 .container {
-  box-shadow: var(--base-hover-shadow);
-  align-self: stretch;
-  justify-self: stretch;
-  margin: 10% 15%;
-  display: grid;
-  position: relative;
-  grid-template-columns: 1.3fr 1fr;
-  grid-template-rows: 1fr auto;
-  grid-template-areas: 'sign-in sign-out' 'footer-Theme footer-Language';
-  border-radius: 1.2em;
-  backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(20px);
+  border-radius: 1.2em;
+  box-shadow: var(--base-hover-shadow);
+  display: grid;
+  grid-template-areas: "sign-in sign-out" "footer-Theme footer-Language";
+  grid-template-columns: 1.3fr 1fr;
+  grid-template-rows: 1fr min-content;
+  margin: 10% 15%;
 }
-.toggle-theme-btn {
-  grid-area: footer-Theme;
+.sign-in-toggle-theme-btn {
   align-self: start;
+  grid-area: footer-Theme;
   justify-self: start;
-  margin: 0.5em
+  margin: 0.5em;
 }
 //.sign-in-container {
 //  grid-area: sign-in;
@@ -31,16 +28,21 @@
 //  }
 //}
 .sign-in-container {
-  grid-area: sign-in;
-  backdrop-filter: blur(10px);
   display: grid;
+  grid-area: sign-in;
   grid-gap: 3rem;
-  position: relative;
   grid-template-rows: 1fr auto auto 1fr;
+  position: relative;
 }
 .sign-in-text {
-  justify-self: center;
   align-self: center;
+  justify-self: center;
   text-align: center;
   text-wrap: pretty;
+}
+.sign-in-btn {
+  @extend .neo-btn;
+  @extend .neo-shadow-base;
+  @extend .transition-base;
+  min-width: 10em;
 }

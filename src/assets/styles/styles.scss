@@ -1,51 +1,53 @@
-@import 'mixins';
-@import 'fonts';
-@import 'colors';
+@import "mixins";
+@import "fonts";
+@import "colors";
 * {
+  background: transparent;
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
-  background: transparent;
 }
 html, body {
-  font-family: 'Custom', sans-serif;
+  color: var(--text-main-color);
+  font-family: "Custom", sans-serif;
   font-style: normal;
   font-weight: 500;
-  color: var(--text-main-color);
   @extend .transition-base
 }
 body {
   background-image: var(--background-image);
-  background-size: cover;
-  background-repeat: no-repeat;
   background-position: top center;
+  background-repeat: no-repeat;
+  background-size: cover;
   @include responsive-font();
-}
-h1 {
-  @extend .transition-base;
 }
 app-root,
 router-outlet + * {
   display: grid;
-  width: 100vw;
   height: 100vh;
+  position: relative;
+  width: 100vw;
+}
+h1 {
+  @extend .transition-base;
 }
 .neo-btn-base {
-  border: none;
-  display: grid;
-  padding: 0.7em 1em;
-  font-size: inherit;
-  font-family: inherit;
-  font-weight: inherit;
-  text-align: center;
-  justify-self: center;
   align-self: center;
-  cursor: pointer;
-  outline: none;
+  border: none;
   border-radius: 0.5em;
-  user-select: none;
-  -webkit-tap-highlight-color: transparent;
   box-shadow: var(--base-shadow);
+  cursor: pointer;
+  display: grid;
+  color: inherit;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  justify-self: center;
+  outline: none;
+  padding: 0.7em 1em;
+  -webkit-tap-highlight-color: transparent;
+  text-align: center;
+  user-select: none;
   &:disabled {
     @extend .disabled;
   }
@@ -60,24 +62,24 @@ router-outlet + * {
 }
 .neo-input-base {
   border: none;
-  padding: 0.7em 1em;
-  font-size: inherit;
-  font-family: inherit;
-  font-weight: inherit;
-  color: inherit;
-  text-align: left;
-  outline: none;
   border-radius: 0.5em;
   box-shadow: var(--inset-shadow);
+  color: inherit;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: 500;
+  outline: none;
+  padding: 0.7em 1em;
   -webkit-tap-highlight-color: transparent;
+  text-align: left;
   &:disabled {
     @extend .disabled;
   }
   &::placeholder {
-    font-style: italic;
-    font-size: inherit;
-    font-weight: inherit;
     color: var(--text-muted-color);
+    font-size: inherit;
+    font-style: italic;
+    font-weight: inherit;
   }
   &::selection {
     background: var(--info-color);
@@ -88,10 +90,10 @@ router-outlet + * {
   box-shadow: var(--inset-shadow);
 }
 .neo-shadow-base {
-  @include apply-shadow('base');
+  @include apply-shadow("base");
 }
 .neo-shadow-inset {
-  @include apply-shadow('inset');
+  @include apply-shadow("inset");
 }
 .transition-base {
   transition: all 0.3s ease-in-out;

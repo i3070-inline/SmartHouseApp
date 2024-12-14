@@ -1,55 +1,63 @@
-@import 'styles';
-.theme-toggle-bnt {
-  @extend .neo-toggle-btn;
+@import "styles";
+.neo-toggle-btn {
   @extend .neo-shadow-inset;
-  min-width: 10em;
   border-radius: 1.5em;
   display: grid;
+  min-width: 10.5em;
+  padding: 0.3em 1em;
   position: relative;
   .toggle-circle {
-    width: 1.7em;
-    height: 1.7em;
     border-radius: 50%;
-    align-self: center;
-    position: absolute;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    left: 0.5em;
-    @extend .transition-base;
     box-shadow: var(--base-shadow);
+    box-sizing: border-box;
+    display: flex;
+    height: 1.7em;
+    justify-content: center;
+    left: -6%;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    @extend .transition-base;
+    width: 1.8em;
     .toggle-icon {
       @extend .transition-base;
-      margin: 20%;
-      mask: url('/assets/icons/dark-icon.svg');
-      -webkit-mask: url('/assets/icons/dark-icon.svg');
       background-color: var(--info-color);
-      mask-repeat: no-repeat;
-      mask-position: center;
-      mask-size: contain;
       border-radius: 50%;
       display: block;
+      margin: 20%;
+      -webkit-mask: url("/assets/icons/dark-icon.svg");
+      mask: url("/assets/icons/dark-icon.svg");
+      mask-position: center;
+      mask-repeat: no-repeat;
+      mask-size: contain;
       pointer-events: none;
     }
   }
   .toggle-label {
-    position: relative;
-    animation: change-align-left 0.3s ease-in-out forwards;
+    animation: change-align-right 0.3s ease-in-out forwards;
+    left: 65%;
+    position: absolute;
+    text-align: center;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    white-space: nowrap;
   }
   &[currentTheme="light"] {
     .toggle-circle {
-      left: calc(100% - 2.2em);
+      left: calc(100% - 1.2em);
       .toggle-icon {
-        mask: url('/assets/icons/light-icon.svg');
-        -webkit-mask: url('/assets/icons/light-icon.svg');
-        mask-repeat: no-repeat;
         background-color: var(--warning-color);
+        -webkit-mask: url("/assets/icons/light-icon.svg");
+        mask: url("/assets/icons/light-icon.svg");
         mask-position: center;
+        mask-repeat: no-repeat;
         mask-size: contain;
       }
     }
     .toggle-label {
-      animation: change-align-right 0.3s ease-in-out forwards;
+      animation: change-align-left 0.3s ease-in-out forwards;
+      left: 35%;
+      transform: translate(-50%, -50%);
     }
   }
 }
@@ -59,7 +67,6 @@
   }
   100% {
     opacity: 1;
-    transform: translateX(10%);
   }
 }
 @keyframes change-align-right {
@@ -68,6 +75,5 @@
   }
   100% {
     opacity: 1;
-    transform: translateX(-10%);
   }
 }

@@ -1,4 +1,4 @@
-@import 'mixins';
+@import "mixins";
 $theme-colors: (
   primary-color: #5d9cec,
   error-color: tomato,
@@ -15,8 +15,8 @@ $data-theme-light: (
   bottom-shadow: #00000080
 );
 [data-theme="dark"] {
-  --background-image: url('/assets/icons/dark-background-image.png');
   --background-color: #3a3842;
+  --background-image: url("/assets/icons/dark-background-image.png");
   --text-main-color: #F5F5F5;
   --text-muted-color: #AAB8C2;
   @include generate-colors-theme($theme-colors, 1, true);
@@ -26,8 +26,8 @@ $data-theme-light: (
   );
 }
 [data-theme="light"] {
-  --background-image: url('/assets/icons/light-background-image.png');
   --background-color: #D5DEEA;
+  --background-image: url("/assets/icons/light-background-image.png");
   --text-main-color: #080808;
   --text-muted-color: #6A8395;
   @include generate-colors-theme($theme-colors, 1, false);

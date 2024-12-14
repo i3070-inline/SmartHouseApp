@@ -1,40 +1,55 @@
-@import 'styles';
+@import "styles";
 :host {
-  display: grid;
   align-items: stretch;
+  display: grid;
   justify-content: stretch;
+  @extend .transition-base;
 }
 .input-container {
-  display: grid;
   align-items: stretch;
+  display: grid;
   justify-content: stretch;
-  position: relative;
   max-height: 2.85em;
+  position: relative;
 }
 .input-element {
   @extend .neo-input;
   @extend .neo-shadow-inset;
-}
-.input-placeholder-container {
-  position: absolute;
-  top: 50%;
-  left: 0.7em;
-  display: grid;
-  grid-template-columns: auto 1fr;
-  align-items: center;
-  opacity: 0.7;
-  font-style: italic;
-  font-weight: 400;
-  pointer-events: none;
-  transform: translateY(-50%);
-  @extend .transition-base;
+  &[type="password"] {
+    letter-spacing: 0.2em;
+  }
 }
 .input-icon {
-  justify-self: start;
-  width: 1.2em;
-  margin-right: 0.3em;
   height: 1.2em;
-  display: none;
+  justify-self: start;
+  margin-right: 0.3em;
+  width: 1.2em;
+}
+.input-placeholder-container {
+  align-items: center;
+  display: grid;
+  font-style: italic;
+  font-weight: 400;
+  grid-template-columns: auto 1fr;
+  left: 0.7em;
+  opacity: 0.7;
+  user-select: none;
+  pointer-events: none;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.input-eye-icon {
+  align-self: center;
+  cursor: pointer;
+  height: 1em;
+  justify-self: end;
+  -webkit-tap-highlight-color: transparent;
+  margin-left: 0.3em;
+  position: absolute;
+  right: 0.7em;
+  width: 1.2em;
+  z-index: 1;
 }
 .input-placeholder {
   font-style: inherit;
@@ -42,23 +57,23 @@
   justify-self: start;
 }
 .input-error-text {
-  margin-top: 0.5em;
+  color: var(--error-color);
+  display: none;
   font-size: 0.7em;
   font-weight: 400;
-  display: none;
-  color: var(--error-color);
+  margin-top: 0.5em;
 }
-.input-element.focused + .input-placeholder-container,
-.input-element.notEmpty + .input-placeholder-container {
+.input-element.focused ~ .input-placeholder-container,
+.input-element.notEmpty ~ .input-placeholder-container {
+  font-style: normal;
+  font-weight: 500;
+  left: 0;
+  opacity: 1;
   top: 0;
   transform: translateY(-130%);
-  opacity: 1;
-  left: 0;
-  font-weight: 500;
-  font-style: normal;
-  .input-icon {
-    display: block;
-  }
+  //.input-icon {
+  //  display: block;
+  //}
 }
 .input-element:invalid ~ .input-error-text {
   display: block;
