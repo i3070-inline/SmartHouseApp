@@ -1,27 +1,31 @@
 <div class="input-container">
-  <input #inputElement
-         (blur)="focused.set(false)"
-         (focus)="focused.set(true)"
-         (input)="notEmpty.set(inputElement.value.trim() !== '')"
-         [class.focused]="focused()"
-         [class.notEmpty]="notEmpty()"
-         [type]="inputType()"
-         class="input-element">
-    <svg (click)="togglePassword()"
-         *ngIf="typeInput === 'password' && notEmpty()"
-         class="input-eye-icon">
-    <svg>
-  <use [attr.href]="inputType() === 'password' ? 'assets/icons/user-eye-icon.svg#user-eye-icon' : 'assets/icons/user-eye-off-icon.svg#user-eye-off-icon'"></use>
-</svg>
-    </svg>
+  <input
+    (blur)="onBlur()"
+    (focus)="onFocus()"
+    (ngModelChange)="onValueChange($event)"
+    [autocomplete]="autocomplete()"
+    [class.empty]="empty()"
+    [class.showFloatedPlaceholder]="showFloatedPlaceholder()"
+    [class.focused]="focused()"
+    [ngModel]="value()"
+    [type]="inputTypeSignal()"
+    class="input-element">
+  @if (eyeIconIsVisible()) {
+    <svg (click)="togglePasswordVisibility()"
+      class="input-eye-icon">
+    <use [attr.href]="inputType() === 'password' ? 'assets/icons/user-eye-icon.svg#user-eye-icon' : 'assets/icons/user-eye-off-icon.svg#user-eye-off-icon'"></use>
+  </svg>
+  }
   <div class="input-placeholder-container">
-    <svg class="input-icon">
-      <use [attr.href]="iconPath"></use>
+    <svg [class.invisible]="iconPath() === '' || iconPath() === null || !showFloatedPlaceholder()"
+         class="input-icon">
+      <use [attr.href]="iconPath()"></use>
     </svg>
     <label class="input-placeholder">
-      {{notEmpty() || focused() ? placeholder.description : placeholder.action}}
+      {{(!empty() || focused()) && showFloatedPlaceholder() ? placeholder().description : placeholder().action}}
     </label>
   </div>
-  <label class="input-error-text">Valeriu</label>
+<label class="input-error-text">
+   {{inputErrorHint()}}
+  </label>
 </div>
-

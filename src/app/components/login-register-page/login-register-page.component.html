@@ -1,14 +1,21 @@
 <div class="container">
-    <div class="sign-in-container">
+
+  <form (ngSubmit)="onSubmit()"
+        [formGroup]="loginForm">
     <h1 class="sign-in-text">User Login</h1>
-    <app-input-element [typeInput]="'text'" [placeholder]="{description : 'Username' , action :
-    'Please enter username' }"
-                       style="margin: 0 20%;"></app-input-element>
-    <app-input-element [typeInput]="'password'" [iconPath]="'assets/icons/password-icon.svg#password-icon'"
-                       [placeholder]="{description :'Password' ,action :'Please enter password' }"
-                       style="margin: 0 20%;"></app-input-element>
+    <app-input-element formControlName="username"
+                       [inputType]="'email'"
+                       [eyeIconIsVisible]="false"
+                       [showFloatedPlaceholder]="true"
+                       [iconPath]="'assets/icons/password-icon.svg#password-icon'"
+                       [placeholder]="{description : 'Username' , action :'Please enter username' }"
+                       inputErrorHint="valeriu"
+                       style="margin: 0 20%;">
+    </app-input-element>
+<!--    <app-input-element-->
+<!--      style="margin: 0 20%;"></app-input-element>-->
       <button class="sign-in-btn">Login</button>
-  </div>
+  </form>
   <app-theme-toggle-button-element class="sign-in-toggle-theme-btn">
   </app-theme-toggle-button-element>
 </div>

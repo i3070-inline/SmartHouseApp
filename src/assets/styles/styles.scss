@@ -36,9 +36,9 @@ h1 {
   border: none;
   border-radius: 0.5em;
   box-shadow: var(--base-shadow);
+  color: inherit;
   cursor: pointer;
   display: grid;
-  color: inherit;
   font-family: inherit;
   font-size: inherit;
   font-weight: inherit;
@@ -53,12 +53,9 @@ h1 {
   }
 }
 .neo-btn {
+  @extend .transition-base;
   @extend .neo-btn-base;
   box-shadow: var(--base-shadow);
-}
-.neo-toggle-btn {
-  @extend .neo-btn-base;
-  box-shadow: var(--inset-shadow);
 }
 .neo-input-base {
   border: none;
@@ -86,6 +83,7 @@ h1 {
   }
 }
 .neo-input {
+  @extend .transition-base;
   @extend .neo-input-base;
   box-shadow: var(--inset-shadow);
 }
@@ -93,10 +91,12 @@ h1 {
   @include apply-shadow("base");
 }
 .neo-shadow-inset {
-  @include apply-shadow("inset");
+  @include apply-shadow("inset", false);
 }
 .transition-base {
-  transition: all 0.3s ease-in-out;
+  transition-duration: 0.3s, 0s;
+  transition-property: all, letter-spacing;
+  transition-timing-function: ease-in-out, ease-in-out;
 }
 .disabled {
   color: var(--text-muted-color);

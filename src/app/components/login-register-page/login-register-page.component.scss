@@ -10,6 +10,16 @@
   grid-template-rows: 1fr min-content;
   margin: 10% 15%;
 }
+.valeriu.ng-invalid.ng-touched {
+  border: red 1px solid
+}
+form{
+  display: grid;
+  grid-area: sign-in;
+  grid-gap: 3rem;
+  grid-template-rows: 1fr auto auto 1fr;
+  position: relative;
+}
 .sign-in-toggle-theme-btn {
   align-self: start;
   grid-area: footer-Theme;
@@ -27,13 +37,7 @@
 //    transform: translate(100%, 0); /* Mută în poziția corespunzătoare */
 //  }
 //}
-.sign-in-container {
-  display: grid;
-  grid-area: sign-in;
-  grid-gap: 3rem;
-  grid-template-rows: 1fr auto auto 1fr;
-  position: relative;
-}
+
 .sign-in-text {
   align-self: center;
   justify-self: center;

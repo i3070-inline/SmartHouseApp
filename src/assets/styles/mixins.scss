@@ -1,34 +1,34 @@
 @mixin generate-shadows($top-shadow, $bottom-shadow) {
-  --base-shadow: -0.3em -0.3em 0.5em #{$top-shadow},
-  0.3em 0.3em 0.5em #{$bottom-shadow},
-  -0.1em -0.1em 0.5em #{$top-shadow},
-  0.1em 0.1em 0.5em #{$bottom-shadow};
-  --inset-shadow: -0.3em -0.3em 0.5em #{$top-shadow},
-  0.3em 0.3em 0.5em #{$bottom-shadow},
-  inset -0.2em -0.2em 0.5em #{$top-shadow},
-  inset 0.2em 0.2em 0.5em #{$bottom-shadow},
-  -0.1em -0.1em 0.5em #{$top-shadow},
-  0.1em 0.1em 0.5em #{$bottom-shadow};
-  --base-hover-shadow: -0.4em -0.4em 0.5em #{$top-shadow},
-  0.4em 0.4em 0.5em #{$bottom-shadow},
-  -0.1em -0.1em 0.5em #{$top-shadow},
-  0.1em 0.1em 0.5em #{$bottom-shadow};
-  --inset-hover-shadow: -0.4em -0.4em 0.5em #{$top-shadow},
-  0.4em 0.4em 0.5em #{$bottom-shadow},
-  inset -0.3em -0.3em 0.5em #{$top-shadow},
-  inset 0.3em 0.3em 0.5em #{$bottom-shadow},
-  -0.1em -0.1em 0.5em #{$top-shadow},
-  0.1em 0.1em 0.5em #{$bottom-shadow};
-  --base-active-shadow: -0.2em -0.2em 0.5em #{$top-shadow},
-  0.2em 0.2em 0.5em #{$bottom-shadow},
-  -0.1em -0.1em 0.5em #{$top-shadow},
-  0.1em 0.1em 0.5em #{$bottom-shadow};
-  --inset-active-shadow: -0.2em -0.2em 0.5em #{$top-shadow},
-  0.2em 0.2em 0.5em #{$bottom-shadow},
-  inset -0.1em -0.1em 0.5em #{$top-shadow},
-  inset 0.1em 0.1em 0.5em #{$bottom-shadow},
-  -0.1em -0.1em 0.5em #{$top-shadow},
-  0.1em 0.1em 0.5em #{$bottom-shadow};
+  --base-shadow: -0.1em -0.1em 0.35em #{$top-shadow},
+  0.1em 0.1em 0.35em #{$bottom-shadow},
+  -0.1em -0.1em 0.35em #{$top-shadow},
+  0.1em 0.1em 0.35em #{$bottom-shadow};
+  --inset-shadow: -0.1em -0.1em 0.35em #{$top-shadow},
+  0.1em 0.1em 0.35em #{$bottom-shadow},
+  inset -0.2em -0.2em 0.35em #{$top-shadow},
+  inset 0.2em 0.2em 0.35em #{$bottom-shadow},
+  -0.1em -0.1em 0.35em #{$top-shadow},
+  0.1em 0.1em 0.35em #{$bottom-shadow};
+  --base-hover-shadow: -0.2em -0.2em 0.35em #{$top-shadow},
+  0.2em 0.2em 0.35em #{$bottom-shadow},
+  -0.1em -0.1em 0.35em #{$top-shadow},
+  0.1em 0.1em 0.35em #{$bottom-shadow};
+  --inset-hover-shadow: -0.2em -0.2em 0.35em #{$top-shadow},
+  0.2em 0.2em 0.35em #{$bottom-shadow},
+  inset -0.35em -0.35em 0.35em #{$top-shadow},
+  inset 0.35em 0.35em 0.35em #{$bottom-shadow},
+  -0.1em -0.1em 0.35em #{$top-shadow},
+  0.1em 0.1em 0.35em #{$bottom-shadow};
+  --base-active-shadow: -0.05em -0.05em 0.35em #{$top-shadow},
+  0.05em 0.05em 0.35em #{$bottom-shadow},
+  -0.1em -0.1em 0.35em #{$top-shadow},
+  0.1em 0.1em 0.35em #{$bottom-shadow};
+  --inset-active-shadow: -0.05em -0.05em 0.35em #{$top-shadow},
+  0.05em 0.05em 0.35em #{$bottom-shadow},
+  inset -0.1em -0.1em 0.35em #{$top-shadow},
+  inset 0.1em 0.1em 0.35em #{$bottom-shadow},
+  -0.1em -0.1em 0.35em #{$top-shadow},
+  0.1em 0.1em 0.35em #{$bottom-shadow};
 }
 @mixin generate-colors-theme($theme-map, $percentage, $isDarken) {
   @each $name, $color in $theme-map {
@@ -51,13 +51,16 @@
     font-size: $desktop;
   }
 }
-@mixin apply-shadow($shadow-type) {
+@mixin apply-shadow($shadow-type, $isUsingActive: true) {
   &:hover,
   &:focus-visible {
     box-shadow: var(--#{$shadow-type}-hover-shadow);
   }
-  &:active {
-    box-shadow: var(--#{$shadow-type}-active-shadow);
+
+  @if $isUsingActive {
+    &:active {
+      box-shadow: var(--#{$shadow-type}-active-shadow);
+    }
   }
 }
 
