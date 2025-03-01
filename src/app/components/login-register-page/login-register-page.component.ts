@@ -32,8 +32,5 @@ export class LoginRegisterPageComponent {
     this.loginForm.updateValueAndValidity();
     console.log(this.loginForm.value.username);
   }
-  getControl(username: string) {
-    return undefined;
-  }
 }
 
