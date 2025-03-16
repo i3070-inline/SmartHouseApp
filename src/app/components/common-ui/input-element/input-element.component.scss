@@ -22,13 +22,11 @@
 .input-element {
   @extend .neo-input;
   @extend .neo-shadow-inset;
-  &[type="password"] {
-    letter-spacing: 0.2em;
-  }
   &:disabled {
     @extend .disabled;
   }
-  &[currentType="password"] {
+  &.password {
+    letter-spacing: 0.1em;
     padding: 0.7em 2.2em 0.7em 1em;
   }
 }
@@ -59,20 +57,16 @@
     font-style: inherit;
     font-weight: inherit;
   }
-}
-.input-element {
-  &.focused.showFloatedPlaceholder,
-  &:not(.empty) {
-    & ~ .input-placeholder-container {
-      font-style: normal;
-      font-weight: 500;
-      left: 0;
-      opacity: 1;
-      top: 0;
-      transform: translateY(-130%);
-    }
+  .input-element.focused.showFloatedPlaceholder ~ &,
+  .input-element:not(.empty) ~ & {
+    font-style: normal;
+    font-weight: 500;
+    left: 0;
+    opacity: 1;
+    top: 0;
+    transform: translateY(-130%);
   }
-  &:not(.empty):not(.showFloatedPlaceholder) ~ .input-placeholder-container {
+  .input-element:not(.empty):not(.showFloatedPlaceholder) ~ & {
     display: none;
   }
 }

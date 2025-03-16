@@ -19,7 +19,8 @@ import {FormControl, FormGroup, ReactiveFormsModule, Validators} from "@angular/
 })
 export class LoginRegisterPageComponent {
   loginForm: FormGroup = new FormGroup({
-    username: new FormControl<string | null>(null, [Validators.required, Validators.minLength(3)])
+    username: new FormControl<string | null>(null, [Validators.required, Validators.minLength(3)]),
+    password: new FormControl<string | null>(null, [Validators.required, Validators.minLength(8)])
   });
   get usernameControl(): FormControl {
     return this.loginForm.get("username") as FormControl;
@@ -31,6 +32,7 @@ export class LoginRegisterPageComponent {
     this.loginForm.markAllAsTouched();
     this.loginForm.updateValueAndValidity();
     console.log(this.loginForm.value.username);
+    console.log(this.loginForm.value.password);
   }
 }
 

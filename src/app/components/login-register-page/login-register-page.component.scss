@@ -10,10 +10,7 @@
   grid-template-rows: 1fr min-content;
   margin: 10% 15%;
 }
-.valeriu.ng-invalid.ng-touched {
-  border: red 1px solid
-}
-form{
+.login-form {
   display: grid;
   grid-area: sign-in;
   grid-gap: 3rem;
@@ -37,12 +34,10 @@ form{
 //    transform: translate(100%, 0); /* Mută în poziția corespunzătoare */
 //  }
 //}
-
 .sign-in-text {
   align-self: center;
   justify-self: center;
   text-align: center;
-  text-wrap: pretty;
 }
 .sign-in-btn {
   @extend .neo-btn;

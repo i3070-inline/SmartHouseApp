@@ -16,7 +16,7 @@ import {Theme} from '../../../commons/enums/shared-enums';
 export class ThemeToggleButtonElementComponent {
   themeService = inject(ThemeHelperService);
   currentTheme = signal<Theme>(this.themeService.getPreferencesTheme());
-  async toggle() {
+  toggleChangeTheme() {
     this.currentTheme.update(theme =>
       theme === Theme.DARK ? Theme.LIGHT : Theme.DARK
     );

@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, computed, forwardRef, input, signal} from "@angular/core";
+import {ChangeDetectionStrategy, Component, computed, forwardRef, input, OnInit, signal} from "@angular/core";
 import {ControlValueAccessor, FormsModule, NG_VALUE_ACCESSOR, ReactiveFormsModule} from "@angular/forms";
 import {typeInput} from "../../../commons/enums/shared-types";
 
@@ -17,11 +17,11 @@ import {typeInput} from "../../../commons/enums/shared-types";
     }
   ]
 })
-export class InputElementComponent implements ControlValueAccessor {
+export class InputElementComponent implements ControlValueAccessor, OnInit {
   //region Members
   placeholder = input<{ description: string | null, action: string | null }>({description: null, action: null});
   iconPath = input<string | null>(null);
-  inputType = input<typeInput>("text");
+  inputType = input.required<typeInput>();
   eyeIconIsVisible = input<boolean>(false);
   showFloatedPlaceholder = input<boolean>(true);
   autocomplete = input<"on" | "off">("on");
@@ -29,7 +29,8 @@ export class InputElementComponent implements ControlValueAccessor {
   focused = signal<boolean>(false);
   value = signal<string | null>(null);
   empty = computed(() => this.value() === "" || this.value() === null);
-  inputTypeSignal = signal<typeInput>(this.inputType());
+  inputTypeSignal = signal<typeInput>("text");
+  disabled = signal<boolean>(false);
   //endregion
   //region Methods
   onBlur = (): void => {
@@ -41,10 +42,10 @@ export class InputElementComponent implements ControlValueAccessor {
   };
   togglePasswordVisibility() {
     if (this.inputTypeSignal() === "password") {
-      this.inputTypeSignal.set(this.inputType());
+      this.inputTypeSignal.set("text");
       return;
     }
-    this.inputTypeSignal.set("password");
+    this.inputTypeSignal.set(this.inputType());
   }
   onValueChange(value: string | null) {
     this.value.set(value);
@@ -56,6 +57,9 @@ export class InputElementComponent implements ControlValueAccessor {
   };
   //endregion
   //region Overrides
+  ngOnInit(): void {
+    this.inputTypeSignal.set(this.inputType());
+  }
   writeValue(value: string | null): void {
     this.value.set(value);
   }
@@ -64,5 +68,8 @@ export class InputElementComponent implements ControlValueAccessor {
   }
   registerOnTouched(fn: () => void): void {
     this.onTouched = fn;
+  }
+  setDisabledState(isDisabled: boolean) {
+    this.disabled.set(isDisabled);
   }
 }
